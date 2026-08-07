@@ -1,5 +1,7 @@
 # firmware-validation-agent
 
+Maintained by: codex-daily-routine
+
 An agentic validation harness for embedded optical-module firmware, built around
 synthetic hardware requirements and a deterministic module simulator.
 
