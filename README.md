@@ -18,7 +18,8 @@ reproducible tests, then reports coverage and fault detection, maps directly to 
 debug loops and lower late-stage hardware risk.
 
 **Engineering evidence:** the CLI reports requirement coverage, scenario pass rate, fault
-detection count, failed assertions with measured values, and a traceability table.
+detection count, release-gate decision, failed assertions with measured values, and a
+traceability table.
 
 This repo is inspired by optical-module bring-up and validation work, but it uses no
 proprietary data, hardware, registers, or product behavior. Everything here is synthetic.
@@ -67,6 +68,7 @@ The CLI report includes:
 - Requirement coverage.
 - Scenario pass rate.
 - Fault detection count.
+- Release-gate decision and blockers.
 - Failed assertions with measured values.
 - Traceability from requirement ID to scenario ID.
 
