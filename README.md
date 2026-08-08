@@ -5,22 +5,6 @@ Maintained by: codex-daily-routine
 An agentic validation harness for embedded optical-module firmware, built around
 synthetic hardware requirements and a deterministic module simulator.
 
-## Research + Money Thesis
-
-**Research question:** can a tool-using agent turn semi-structured hardware requirements
-into executable validation scenarios while preserving traceability from each requirement
-to the test that checked it?
-
-**Money question:** AI infrastructure is increasingly limited by physical systems:
-optics, power, thermal behavior, packaging, and validation time. Firmware bring-up and
-hardware verification are direct schedule bottlenecks. A tool that turns requirements into
-reproducible tests, then reports coverage and fault detection, maps directly to shorter
-debug loops and lower late-stage hardware risk.
-
-**Engineering evidence:** the CLI reports requirement coverage, scenario pass rate, fault
-detection count, release-gate decision, failed assertions with measured values, and a
-traceability table.
-
 This repo is inspired by optical-module bring-up and validation work, but it uses no
 proprietary data, hardware, registers, or product behavior. Everything here is synthetic.
 
