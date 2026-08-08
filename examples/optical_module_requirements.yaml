@@ -1,0 +1,82 @@
+module:
+  name: synthetic-sipho-optical-module
+
+registers:
+  - name: module_state
+    address: "0x00"
+    access: r
+    reset: reset
+  - name: tx_disable
+    address: "0x01"
+    access: rw
+    reset: true
+  - name: module_temp_c
+    address: "0x10"
+    access: rw
+    reset: 25.0
+    min: -20.0
+    max: 95.0
+  - name: laser_bias_ma
+    address: "0x11"
+    access: rw
+    reset: 0.0
+    min: 0.0
+    max: 120.0
+  - name: optical_power_dbm
+    address: "0x12"
+    access: rw
+    reset: -99.0
+    min: -99.0
+    max: 5.0
+  - name: telemetry_valid
+    address: "0x13"
+    access: r
+    reset: false
+  - name: calibrated
+    address: "0x14"
+    access: r
+    reset: false
+  - name: alarm
+    address: "0x15"
+    access: r
+    reset: none
+
+requirements:
+  - id: REQ-001
+    text: Module shall reach ready state with valid telemetry after power-on bring-up.
+    scenario: power_on_bringup
+    expected:
+      module_state: ready
+  - id: REQ-002
+    text: Module shall raise an over-temperature alarm above the safe thermal threshold.
+    scenario: threshold_alarm
+    expected:
+      temp_c: 82.0
+      alarm: over_temperature
+  - id: REQ-003
+    text: Host validation shall detect telemetry dropout during module operation.
+    scenario: telemetry_dropout
+    expected:
+      valid: false
+  - id: REQ-004
+    text: Calibration loop shall converge below the control-error limit within a short run.
+    scenario: calibration_convergence
+    expected:
+      steps: 5
+      control_error_lte: 0.05
+  - id: REQ-005
+    text: Host shall detect command rate limiting after excessive register writes.
+    scenario: rate_limit
+    expected:
+      writes: 10
+  - id: REQ-006
+    text: Unknown register access shall fail loudly instead of returning stale data.
+    scenario: invalid_register_access
+    expected:
+      register: vendor_shadow_0
+  - id: REQ-007
+    text: Optical output power shall remain inside the expected signal-verification window.
+    scenario: signal_verification
+    expected:
+      optical_power_min_dbm: -4.0
+      optical_power_max_dbm: -1.0

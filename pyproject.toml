@@ -1,0 +1,10 @@
+[project]
+name = "firmware-validation-agent"
+version = "0.1.0"
+description = "Agentic validation planning against a synthetic optical-module firmware simulator."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["pyyaml>=6.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
